@@ -17,22 +17,22 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   }
 
   return (
-      <div className="min-h-screen bg-gradient-to-br from-violet-400 via-sky-400 to-purple-600">
+      <div className="min-h-screen" style={{ backgroundColor: '#4B3832' }}>
       <div className="flex">
         <Sidebar />
         
-        <div className="flex-1 lg:ml-0">
+        <div className="flex-1 lg:ml-0 border-l" style={{ borderColor: '#228B22' }}>
           {/* Top bar with language selector */}
-          <div className="lg:hidden flex justify-end p-4">
+          <div className="lg:hidden flex justify-end p-4 border-b" style={{ borderColor: '#228B22', backgroundColor: '#F5F5DC', color: '#4B3832' }}>
             <LanguageSelector />
           </div>
           
-          <div className="hidden lg:flex justify-end p-6">
+          <div className="hidden lg:flex justify-end p-6 border-b" style={{ borderColor: '#228B22', backgroundColor: '#F5F5DC', color: '#4B3832' }}>
             <LanguageSelector />
           </div>
 
           {/* Main content */}
-          <main className="p-4 lg:p-6 pt-0 lg:pt-0 pb-8">
+          <main className="p-4 lg:p-6 pt-0 lg:pt-0 pb-8 border m-4 rounded-lg shadow-sm" style={{ borderColor: '#228B22', backgroundColor: '#F5F5DC', color: '#4B3832' }}>
             {children}
           </main>
         </div>

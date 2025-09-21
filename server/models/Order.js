@@ -32,7 +32,6 @@ const orderSchema = new mongoose.Schema({
   },
   orderNumber: {
     type: String,
-    required: true,
     unique: true
   },
   items: [orderItemSchema],
@@ -99,4 +98,3 @@ orderSchema.pre('save', async function(next) {
 });
 
 module.exports = mongoose.model('Order', orderSchema);
-

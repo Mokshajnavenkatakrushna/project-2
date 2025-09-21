@@ -61,4 +61,3 @@ const soilAnalysisSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model('SoilAnalysis', soilAnalysisSchema);
-

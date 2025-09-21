@@ -256,4 +256,3 @@ const OrderHistory: React.FC<OrderHistoryProps> = ({ orders }) => {
 };
 
 export default OrderHistory;
-

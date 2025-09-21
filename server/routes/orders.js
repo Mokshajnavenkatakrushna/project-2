@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const Order = require('../models/Order');
 const Payment = require('../models/Payment');
 const router = express.Router();
@@ -11,6 +12,11 @@ router.post('/', async (req, res) => {
     // Validate required fields
     if (!userId || !items || !Array.isArray(items) || items.length === 0) {
       return res.status(400).json({ error: 'Missing required fields' });
+    }
+
+    // Validate userId is a valid ObjectId
+    if (!mongoose.Types.ObjectId.isValid(userId)) {
+      return res.status(400).json({ error: 'Invalid user ID' });
     }
 
     const order = new Order({
@@ -39,8 +45,34 @@ router.post('/', async (req, res) => {
     await payment.save();
 
     res.status(201).json({
-      order,
-      payment
+      message: 'Order created successfully',
+      order: {
+        _id: order._id,
+        userId: order.userId,
+        orderNumber: order.orderNumber,
+        items: order.items,
+        subtotal: order.subtotal,
+        shipping: order.shipping,
+        tax: order.tax,
+        total: order.total,
+        status: order.status,
+        paymentStatus: order.paymentStatus,
+        paymentMethod: order.paymentMethod,
+        shippingAddress: order.shippingAddress,
+        paymentDetails: order.paymentDetails,
+        notes: order.notes,
+        createdAt: order.createdAt,
+        updatedAt: order.updatedAt
+      },
+      payment: {
+        _id: payment._id,
+        orderId: payment.orderId,
+        userId: payment.userId,
+        amount: payment.amount,
+        paymentMethod: payment.paymentMethod,
+        status: payment.status,
+        createdAt: payment.createdAt
+      }
     });
   } catch (error) {
     console.error('Error creating order:', error);
@@ -132,4 +164,3 @@ router.put('/:id/cancel', async (req, res) => {
 });
 
 module.exports = router;
-

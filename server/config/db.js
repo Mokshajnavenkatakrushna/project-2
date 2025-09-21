@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 const connectDB = async () => {
-  const uri = process.env.MONGODB_URI;
+  const uri = process.env.MONGODB_URI || 'mongodb+srv://SoilQ:Nani%40123@soilq-checker.yqh7ksl.mongodb.net/soilq';
   if (!uri) {
     console.error('MONGODB_URI is not set. Please add it to server/.env');
     process.exit(1);
