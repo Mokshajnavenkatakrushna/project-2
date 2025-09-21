@@ -28,14 +28,14 @@ const Shop: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-white/10 backdrop-blur-md rounded-xl border border-white/20 p-6">
+      <div className="bg-white rounded-xl border border-gray-200 p-6">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div>
             <h1 className="text-3xl font-bold text-black mb-2">
               🛒 {t('shop')}
             </h1>
             <p className="text-black/70">
-              Find the perfect fertilizers and pesticides for your soil needs
+              Find the perfect fertilizers, pesticides, and soil amendments for your agricultural needs
             </p>
           </div>
           
@@ -59,7 +59,7 @@ const Shop: React.FC = () => {
       ) : (
         <>
           {/* Search and Filter */}
-          <div className="bg-white/10 backdrop-blur-md rounded-xl border border-white/20 p-6">
+          <div className="bg-white rounded-xl border border-gray-200 p-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* Search */}
               <div className="relative">
@@ -69,7 +69,7 @@ const Shop: React.FC = () => {
                   placeholder="Search products..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 bg-white/10 border border-white/20 rounded-lg text-black placeholder-white/60 focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-200"
+                  className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-black placeholder-gray-500 focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-200"
                 />
               </div>
 
@@ -79,10 +79,10 @@ const Shop: React.FC = () => {
                 <select
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 bg-white/10 border border-white/20 rounded-lg text-black focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-200"
+                  className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-black focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-200"
                 >
                   {categories.map(category => (
-                    <option key={category} value={category} className="bg-gray-800">
+                    <option key={category} value={category} className="bg-white text-black">
                       {category === 'all' ? 'All Categories' : category}
                     </option>
                   ))}
@@ -92,11 +92,21 @@ const Shop: React.FC = () => {
           </div>
 
           {/* Products Grid */}
-          <div className="bg-white/10 backdrop-blur-md rounded-xl border border-white/20 p-6">
+          <div className="bg-white rounded-xl border border-gray-200 p-6">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-bold text-black">
-                Products ({filteredProducts.length})
-              </h2>
+              <div>
+                <h2 className="text-xl font-bold text-black">
+                  {selectedCategory === 'Pesticide' ? '🦠 Pesticides' : 
+                   selectedCategory === 'Fertilizer' ? '🌱 Fertilizers' :
+                   selectedCategory === 'Soil Amendment' ? '🌍 Soil Amendments' :
+                   'Products'} ({filteredProducts.length})
+                </h2>
+                {selectedCategory !== 'all' && (
+                  <p className="text-sm text-black/60 mt-1">
+                    Showing {selectedCategory.toLowerCase()} products
+                  </p>
+                )}
+              </div>
               <div className="flex items-center space-x-2 text-black/70">
                 <Package size={20} />
                 <span>{filteredProducts.filter(p => p.inStock).length} in stock</span>
@@ -124,3 +134,4 @@ const Shop: React.FC = () => {
 };
 
 export default Shop;
+

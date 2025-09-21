@@ -39,7 +39,7 @@ const Profile: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Profile Header */}
-      <div className="bg-white/10 backdrop-blur-md rounded-xl border border-white/20 p-6">
+      <div className="bg-white rounded-xl border border-gray-200 p-6">
         <div className="flex items-center space-x-4">
           <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center">
             <span className="text-2xl font-bold text-black">
@@ -58,7 +58,7 @@ const Profile: React.FC = () => {
 
       {/* Statistics */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-white/10 backdrop-blur-md rounded-xl border border-white/20 p-6">
+        <div className="bg-white rounded-xl border border-gray-200 p-6">
           <div className="flex items-center space-x-3">
             <BarChart3 className="text-blue-900" size={24} />
             <div>
@@ -68,7 +68,7 @@ const Profile: React.FC = () => {
           </div>
         </div>
 
-        <div className="bg-white/10 backdrop-blur-md rounded-xl border border-white/20 p-6">
+        <div className="bg-white rounded-xl border border-gray-200 p-6">
           <div className="flex items-center space-x-3">
             <TrendingUp className="text-blue-900" size={24} />
             <div>
@@ -80,7 +80,7 @@ const Profile: React.FC = () => {
           </div>
         </div>
 
-        <div className="bg-white/10 backdrop-blur-md rounded-xl border border-white/20 p-6">
+        <div className="bg-white rounded-xl border border-gray-200 p-6">
           <div className="flex items-center space-x-3">
             <ShoppingBag className="text-blue-900" size={24} />
             <div>
@@ -92,14 +92,14 @@ const Profile: React.FC = () => {
       </div>
 
       {/* Tabs */}
-      <div className="bg-white/10 backdrop-blur-md rounded-xl border border-white/20 p-6">
+      <div className="bg-white rounded-xl border border-gray-200 p-6">
         <div className="flex space-x-1 mb-6">
           <button
             onClick={() => setActiveTab('tests')}
             className={`px-4 py-2 rounded-lg font-medium transition-colors ${
               activeTab === 'tests'
                 ? 'bg-blue-500 text-white'
-                : 'text-black/70 hover:text-black hover:bg-white/10'
+                : 'text-black/70 hover:text-black hover:bg-gray-100'
             }`}
           >
             <BarChart3 size={16} className="inline mr-2" />
@@ -110,7 +110,7 @@ const Profile: React.FC = () => {
             className={`px-4 py-2 rounded-lg font-medium transition-colors ${
               activeTab === 'orders'
                 ? 'bg-blue-500 text-white'
-                : 'text-black/70 hover:text-black hover:bg-white/10'
+                : 'text-black/70 hover:text-black hover:bg-gray-100'
             }`}
           >
             <Package size={16} className="inline mr-2" />
@@ -138,7 +138,7 @@ const Profile: React.FC = () => {
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="border-b border-white/20">
+                <tr className="border-b border-gray-200">
                   <th className="text-left py-3 px-4 text-black/70 font-medium">Date</th>
                   <th className="text-left py-3 px-4 text-black/70 font-medium">N</th>
                   <th className="text-left py-3 px-4 text-black/70 font-medium">P</th>
@@ -150,7 +150,7 @@ const Profile: React.FC = () => {
               </thead>
               <tbody>
                 {soilHistory.map((test) => (
-                  <tr key={test.id} className="border-b border-white/10 hover:bg-white/5 transition-colors">
+                  <tr key={test.id} className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                     <td className="py-3 px-4 text-black">{formatDate(test.date)}</td>
                     <td className="py-3 px-4 text-black">{test.nitrogen}</td>
                     <td className="py-3 px-4 text-black">{test.phosphorus}</td>
@@ -184,7 +184,7 @@ const Profile: React.FC = () => {
 
       {/* Recent Recommendations - Only show for tests tab */}
       {activeTab === 'tests' && soilHistory.length > 0 && soilHistory[0].recommendations.length > 0 && (
-        <div className="bg-white/10 backdrop-blur-md rounded-xl border border-white/20 p-6">
+        <div className="bg-white rounded-xl border border-gray-200 p-6">
           <h2 className="text-xl font-bold text-black mb-4">Latest Recommendations</h2>
           <div className="space-y-3">
             {soilHistory[0].recommendations.map((rec, index) => (

@@ -174,7 +174,7 @@ const Payment: React.FC<PaymentProps> = ({ cart, total, onSuccess, onCancel }) =
                 placeholder="1234 5678 9012 3456"
                 value={paymentDetails.cardNumber || ''}
                 onChange={(e) => handlePaymentDetailsChange('cardNumber', e.target.value)}
-                className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-black placeholder-white/60 focus:ring-2 focus:ring-green-400 focus:border-transparent"
+                className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-black placeholder-gray-500 focus:ring-2 focus:ring-green-400 focus:border-transparent"
                 maxLength={19}
               />
             </div>
@@ -186,7 +186,7 @@ const Payment: React.FC<PaymentProps> = ({ cart, total, onSuccess, onCancel }) =
                   placeholder="MM/YY"
                   value={paymentDetails.expiryDate || ''}
                   onChange={(e) => handlePaymentDetailsChange('expiryDate', e.target.value)}
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-black placeholder-white/60 focus:ring-2 focus:ring-green-400 focus:border-transparent"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-black placeholder-gray-500 focus:ring-2 focus:ring-green-400 focus:border-transparent"
                   maxLength={5}
                 />
               </div>
@@ -197,7 +197,7 @@ const Payment: React.FC<PaymentProps> = ({ cart, total, onSuccess, onCancel }) =
                   placeholder="123"
                   value={paymentDetails.cvv || ''}
                   onChange={(e) => handlePaymentDetailsChange('cvv', e.target.value)}
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-black placeholder-white/60 focus:ring-2 focus:ring-green-400 focus:border-transparent"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-black placeholder-gray-500 focus:ring-2 focus:ring-green-400 focus:border-transparent"
                   maxLength={4}
                 />
               </div>
@@ -209,7 +209,7 @@ const Payment: React.FC<PaymentProps> = ({ cart, total, onSuccess, onCancel }) =
                 placeholder="John Doe"
                 value={paymentDetails.cardholderName || ''}
                 onChange={(e) => handlePaymentDetailsChange('cardholderName', e.target.value)}
-                className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-black placeholder-white/60 focus:ring-2 focus:ring-green-400 focus:border-transparent"
+                className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-black placeholder-gray-500 focus:ring-2 focus:ring-green-400 focus:border-transparent"
               />
             </div>
           </div>
@@ -236,7 +236,7 @@ const Payment: React.FC<PaymentProps> = ({ cart, total, onSuccess, onCancel }) =
             <select
               value={paymentDetails.bank || ''}
               onChange={(e) => handlePaymentDetailsChange('bank', e.target.value)}
-              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-black focus:ring-2 focus:ring-green-400 focus:border-transparent"
+              className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-black focus:ring-2 focus:ring-green-400 focus:border-transparent"
             >
               <option value="">Select your bank</option>
               <option value="sbi">State Bank of India</option>
@@ -255,7 +255,7 @@ const Payment: React.FC<PaymentProps> = ({ cart, total, onSuccess, onCancel }) =
             <select
               value={paymentDetails.wallet || ''}
               onChange={(e) => handlePaymentDetailsChange('wallet', e.target.value)}
-              className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-black focus:ring-2 focus:ring-green-400 focus:border-transparent"
+              className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-black focus:ring-2 focus:ring-green-400 focus:border-transparent"
             >
               <option value="">Select your wallet</option>
               <option value="paypal">PayPal</option>
@@ -273,7 +273,7 @@ const Payment: React.FC<PaymentProps> = ({ cart, total, onSuccess, onCancel }) =
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white/10 backdrop-blur-md rounded-xl border border-white/20 p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+      <div className="bg-white rounded-xl border border-gray-200 p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-2xl font-bold text-black">Payment & Checkout</h2>
           <button
@@ -295,7 +295,7 @@ const Payment: React.FC<PaymentProps> = ({ cart, total, onSuccess, onCancel }) =
                   type="text"
                   value={shippingAddress.name}
                   onChange={(e) => handleAddressChange('name', e.target.value)}
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-black placeholder-white/60 focus:ring-2 focus:ring-green-400 focus:border-transparent"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-black placeholder-gray-500 focus:ring-2 focus:ring-green-400 focus:border-transparent"
                   placeholder="Enter your full name"
                 />
               </div>
@@ -305,7 +305,7 @@ const Payment: React.FC<PaymentProps> = ({ cart, total, onSuccess, onCancel }) =
                   type="tel"
                   value={shippingAddress.phone}
                   onChange={(e) => handleAddressChange('phone', e.target.value)}
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-black placeholder-white/60 focus:ring-2 focus:ring-green-400 focus:border-transparent"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-black placeholder-gray-500 focus:ring-2 focus:ring-green-400 focus:border-transparent"
                   placeholder="Enter your phone number"
                 />
               </div>
@@ -314,7 +314,7 @@ const Payment: React.FC<PaymentProps> = ({ cart, total, onSuccess, onCancel }) =
                 <textarea
                   value={shippingAddress.address}
                   onChange={(e) => handleAddressChange('address', e.target.value)}
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-black placeholder-white/60 focus:ring-2 focus:ring-green-400 focus:border-transparent"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-black placeholder-gray-500 focus:ring-2 focus:ring-green-400 focus:border-transparent"
                   placeholder="Enter your complete address"
                   rows={3}
                 />
@@ -325,7 +325,7 @@ const Payment: React.FC<PaymentProps> = ({ cart, total, onSuccess, onCancel }) =
                   type="text"
                   value={shippingAddress.city}
                   onChange={(e) => handleAddressChange('city', e.target.value)}
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-black placeholder-white/60 focus:ring-2 focus:ring-green-400 focus:border-transparent"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-black placeholder-gray-500 focus:ring-2 focus:ring-green-400 focus:border-transparent"
                   placeholder="Enter your city"
                 />
               </div>
@@ -335,7 +335,7 @@ const Payment: React.FC<PaymentProps> = ({ cart, total, onSuccess, onCancel }) =
                   type="text"
                   value={shippingAddress.state}
                   onChange={(e) => handleAddressChange('state', e.target.value)}
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-black placeholder-white/60 focus:ring-2 focus:ring-green-400 focus:border-transparent"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-black placeholder-gray-500 focus:ring-2 focus:ring-green-400 focus:border-transparent"
                   placeholder="Enter your state"
                 />
               </div>
@@ -345,7 +345,7 @@ const Payment: React.FC<PaymentProps> = ({ cart, total, onSuccess, onCancel }) =
                   type="text"
                   value={shippingAddress.pincode}
                   onChange={(e) => handleAddressChange('pincode', e.target.value)}
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-black placeholder-white/60 focus:ring-2 focus:ring-green-400 focus:border-transparent"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-black placeholder-gray-500 focus:ring-2 focus:ring-green-400 focus:border-transparent"
                   placeholder="Enter pincode"
                 />
               </div>
@@ -363,8 +363,8 @@ const Payment: React.FC<PaymentProps> = ({ cart, total, onSuccess, onCancel }) =
                     key={method.id}
                     className={`p-4 rounded-lg border-2 cursor-pointer transition-all ${
                       selectedMethod === method.id
-                        ? 'border-green-500 bg-green-500/10'
-                        : 'border-white/20 bg-white/5 hover:bg-white/10'
+                        ? 'border-green-500 bg-green-50'
+                        : 'border-gray-200 bg-gray-50 hover:bg-gray-100'
                     }`}
                     onClick={() => setSelectedMethod(method.id)}
                   >
@@ -400,7 +400,7 @@ const Payment: React.FC<PaymentProps> = ({ cart, total, onSuccess, onCancel }) =
           )}
 
           {/* Order Summary */}
-          <div className="bg-white/5 rounded-lg p-4">
+          <div className="bg-gray-50 rounded-lg p-4">
             <h3 className="text-lg font-semibold text-black mb-3">Order Summary</h3>
             <div className="space-y-2">
               <div className="flex justify-between text-black/70">
@@ -415,7 +415,7 @@ const Payment: React.FC<PaymentProps> = ({ cart, total, onSuccess, onCancel }) =
                 <span>Tax</span>
                 <span>${(total * 0.08).toFixed(2)}</span>
               </div>
-              <div className="border-t border-white/20 pt-2">
+              <div className="border-t border-gray-300 pt-2">
                 <div className="flex justify-between text-black font-bold text-lg">
                   <span>Total</span>
                   <span>${(total + 5.99 + (total * 0.08)).toFixed(2)}</span>
@@ -428,7 +428,7 @@ const Payment: React.FC<PaymentProps> = ({ cart, total, onSuccess, onCancel }) =
           <div className="flex space-x-4">
             <button
               onClick={onCancel}
-              className="flex-1 bg-white/10 hover:bg-white/20 text-black font-semibold py-3 px-4 rounded-lg border border-white/20 transition-colors"
+              className="flex-1 bg-gray-100 hover:bg-gray-200 text-black font-semibold py-3 px-4 rounded-lg border border-gray-300 transition-colors"
             >
               Cancel
             </button>

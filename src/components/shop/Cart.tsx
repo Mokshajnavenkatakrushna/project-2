@@ -38,8 +38,8 @@ const Cart: React.FC = () => {
 
   if (cart.length === 0) {
     return (
-      <div className="bg-white/10 backdrop-blur-md rounded-xl border border-white/20 p-8 text-center">
-        <ShoppingBag className="mx-auto text-white/40 mb-4" size={64} />
+      <div className="bg-white rounded-xl border border-gray-200 p-8 text-center">
+        <ShoppingBag className="mx-auto text-gray-400 mb-4" size={64} />
         <h2 className="text-2xl font-bold text-black mb-2">Your cart is empty</h2>
         <p className="text-black/70">Browse our products and add items to your cart</p>
       </div>
@@ -49,9 +49,9 @@ const Cart: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Cart Items */}
-      <div className="bg-white/10 backdrop-blur-md rounded-xl border border-white/20 p-6">
+      <div className="bg-white rounded-xl border border-gray-200 p-6">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-bold text-white">{t('cart')} ({cart.length} items)</h2>
+          <h2 className="text-2xl font-bold text-gray-800">{t('cart')} ({cart.length} items)</h2>
           <button
             onClick={clearCart}
             className="text-red-700 hover:text-red-700 transition-colors"
@@ -62,7 +62,7 @@ const Cart: React.FC = () => {
 
         <div className="space-y-4">
           {cart.map((item) => (
-            <div key={item.product.id} className="flex items-center space-x-4 p-4 bg-white/5 rounded-lg border border-white/10">
+            <div key={item.product.id} className="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg border border-gray-200">
               <img
                 src={item.product.image}
                 alt={item.product.name}
@@ -78,18 +78,18 @@ const Cart: React.FC = () => {
               <div className="flex items-center space-x-3">
                 <button
                   onClick={() => handleQuantityChange(item.product.id, -1)}
-                  className="w-8 h-8 bg-white/30 rounded-full flex items-center justify-center text-white hover:bg-black/40 transition-colors"
+                  className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-gray-700 hover:bg-gray-300 transition-colors"
                 >
                   <Minus size={16} />
                 </button>
                 
-                <span className="text-white font-semibold min-w-[2rem] text-center">
+                <span className="text-gray-700 font-semibold min-w-[2rem] text-center">
                   {item.quantity}
                 </span>
                 
                 <button
                   onClick={() => handleQuantityChange(item.product.id, 1)}
-                  className="w-8 h-8 bg-white/30 rounded-full flex items-center justify-center text-white hover:bg-black/40 transition-colors"
+                  className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-gray-700 hover:bg-gray-300 transition-colors"
                 >
                   <Plus size={16} />
                 </button>
@@ -113,7 +113,7 @@ const Cart: React.FC = () => {
       </div>
 
       {/* Order Summary */}
-      <div className="bg-white/10 backdrop-blur-md rounded-xl border border-white/20 p-6">
+      <div className="bg-white rounded-xl border border-gray-200 p-6">
         <h3 className="text-xl font-bold text-black mb-4">Order Summary</h3>
         
         <div className="space-y-2 mb-4">
@@ -129,7 +129,7 @@ const Cart: React.FC = () => {
             <span>Tax</span>
             <span>${(total * 0.08).toFixed(2)}</span>
           </div>
-          <div className="border-t border-black/90 pt-2">
+          <div className="border-t border-gray-300 pt-2">
             <div className="flex justify-between text-black font-bold text-lg">
               <span>{t('total')}</span>
               <span>${(total + 5.99 + (total * 0.08)).toFixed(2)}</span>

@@ -80,10 +80,10 @@ const OrderHistory: React.FC<OrderHistoryProps> = ({ orders }) => {
 
   if (orders.length === 0) {
     return (
-      <div className="bg-white/10 backdrop-blur-md rounded-xl border border-white/20 p-8 text-center">
-        <Package className="mx-auto text-black/40 mb-4" size={64} />
-        <h3 className="text-lg font-semibold text-black/60 mb-2">No orders yet</h3>
-        <p className="text-black/40">Your order history will appear here</p>
+      <div className="bg-white rounded-xl border border-gray-200 p-8 text-center shadow-sm">
+        <Package className="mx-auto text-gray-400 mb-4" size={64} />
+        <h3 className="text-lg font-semibold text-gray-700 mb-2">No orders yet</h3>
+        <p className="text-gray-500">Your order history will appear here</p>
       </div>
     );
   }
@@ -91,8 +91,8 @@ const OrderHistory: React.FC<OrderHistoryProps> = ({ orders }) => {
   return (
     <div className="space-y-6">
       {/* Orders List */}
-      <div className="bg-white/10 backdrop-blur-md rounded-xl border border-white/20 p-6">
-        <h2 className="text-xl font-bold text-black mb-6">Order History ({orders.length})</h2>
+      <div className="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
+        <h2 className="text-xl font-bold text-gray-800 mb-6">Order History ({orders.length})</h2>
         
         <div className="space-y-4">
           {orders.map((order) => {
@@ -100,17 +100,17 @@ const OrderHistory: React.FC<OrderHistoryProps> = ({ orders }) => {
             return (
               <div
                 key={order._id}
-                className="p-4 bg-white/5 rounded-lg border border-white/10 hover:bg-white/10 transition-colors cursor-pointer"
+                className="p-4 bg-gray-50 rounded-lg border border-gray-200 hover:bg-gray-100 transition-colors cursor-pointer"
                 onClick={() => setSelectedOrder(order)}
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center">
+                    <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
                       <Package size={20} className="text-blue-600" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-black">Order #{order.orderNumber}</h3>
-                      <p className="text-black/70 text-sm">
+                      <h3 className="font-semibold text-gray-800">Order #{order.orderNumber}</h3>
+                      <p className="text-gray-600 text-sm">
                         {order.items.length} item{order.items.length !== 1 ? 's' : ''} • {formatDate(order.createdAt)}
                       </p>
                       <div className="flex items-center space-x-4 mt-1">
@@ -125,8 +125,8 @@ const OrderHistory: React.FC<OrderHistoryProps> = ({ orders }) => {
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="font-bold text-black">${order.total.toFixed(2)}</p>
-                    <p className="text-black/60 text-sm">{formatPaymentMethod(order.paymentMethod)}</p>
+                    <p className="font-bold text-gray-800">${order.total.toFixed(2)}</p>
+                    <p className="text-gray-600 text-sm">{formatPaymentMethod(order.paymentMethod)}</p>
                     <button className="text-blue-600 hover:text-blue-800 text-sm font-medium mt-1">
                       View Details
                     </button>
@@ -141,12 +141,12 @@ const OrderHistory: React.FC<OrderHistoryProps> = ({ orders }) => {
       {/* Order Details Modal */}
       {selectedOrder && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white/10 backdrop-blur-md rounded-xl border border-white/20 p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+          <div className="bg-white rounded-xl border border-gray-200 p-6 max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-xl">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-bold text-black">Order Details</h2>
+              <h2 className="text-2xl font-bold text-gray-800">Order Details</h2>
               <button
                 onClick={() => setSelectedOrder(null)}
-                className="text-black/60 hover:text-black transition-colors"
+                className="text-gray-500 hover:text-gray-700 transition-colors"
               >
                 <X size={24} />
               </button>
@@ -156,11 +156,11 @@ const OrderHistory: React.FC<OrderHistoryProps> = ({ orders }) => {
               {/* Order Info */}
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <h3 className="font-semibold text-black mb-2">Order Information</h3>
+                  <h3 className="font-semibold text-gray-800 mb-2">Order Information</h3>
                   <div className="space-y-1 text-sm">
-                    <p><span className="text-black/70">Order #:</span> {selectedOrder.orderNumber}</p>
-                    <p><span className="text-black/70">Date:</span> {formatDate(selectedOrder.createdAt)}</p>
-                    <p><span className="text-black/70">Status:</span> 
+                    <p><span className="text-gray-600">Order #:</span> <span className="text-gray-800">{selectedOrder.orderNumber}</span></p>
+                    <p><span className="text-gray-600">Date:</span> <span className="text-gray-800">{formatDate(selectedOrder.createdAt)}</span></p>
+                    <p><span className="text-gray-600">Status:</span> 
                       <span className={`ml-1 ${getStatusColor(selectedOrder.status)}`}>
                         {selectedOrder.status.charAt(0).toUpperCase() + selectedOrder.status.slice(1)}
                       </span>
@@ -168,16 +168,16 @@ const OrderHistory: React.FC<OrderHistoryProps> = ({ orders }) => {
                   </div>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-black mb-2">Payment Information</h3>
+                  <h3 className="font-semibold text-gray-800 mb-2">Payment Information</h3>
                   <div className="space-y-1 text-sm">
-                    <p><span className="text-black/70">Method:</span> {formatPaymentMethod(selectedOrder.paymentMethod)}</p>
-                    <p><span className="text-black/70">Status:</span> 
+                    <p><span className="text-gray-600">Method:</span> <span className="text-gray-800">{formatPaymentMethod(selectedOrder.paymentMethod)}</span></p>
+                    <p><span className="text-gray-600">Status:</span> 
                       <span className={`ml-1 ${getPaymentStatusColor(selectedOrder.paymentStatus)}`}>
                         {selectedOrder.paymentStatus.charAt(0).toUpperCase() + selectedOrder.paymentStatus.slice(1)}
                       </span>
                     </p>
                     {selectedOrder.paymentDetails?.transactionId && (
-                      <p><span className="text-black/70">Transaction ID:</span> {selectedOrder.paymentDetails.transactionId}</p>
+                      <p><span className="text-gray-600">Transaction ID:</span> <span className="text-gray-800">{selectedOrder.paymentDetails.transactionId}</span></p>
                     )}
                   </div>
                 </div>
@@ -185,38 +185,38 @@ const OrderHistory: React.FC<OrderHistoryProps> = ({ orders }) => {
 
               {/* Shipping Address */}
               <div>
-                <h3 className="font-semibold text-black mb-2 flex items-center">
+                <h3 className="font-semibold text-gray-800 mb-2 flex items-center">
                   <MapPin size={16} className="mr-2" />
                   Shipping Address
                 </h3>
-                <div className="bg-white/5 rounded-lg p-4 text-sm">
-                  <p className="font-medium text-black">{selectedOrder.shippingAddress.name}</p>
-                  <p className="text-black/70">{selectedOrder.shippingAddress.address}</p>
-                  <p className="text-black/70">
+                <div className="bg-gray-50 rounded-lg p-4 text-sm border border-gray-200">
+                  <p className="font-medium text-gray-800">{selectedOrder.shippingAddress.name}</p>
+                  <p className="text-gray-600">{selectedOrder.shippingAddress.address}</p>
+                  <p className="text-gray-600">
                     {selectedOrder.shippingAddress.city}, {selectedOrder.shippingAddress.state} {selectedOrder.shippingAddress.pincode}
                   </p>
-                  <p className="text-black/70">Phone: {selectedOrder.shippingAddress.phone}</p>
+                  <p className="text-gray-600">Phone: {selectedOrder.shippingAddress.phone}</p>
                 </div>
               </div>
 
               {/* Order Items */}
               <div>
-                <h3 className="font-semibold text-black mb-4">Order Items</h3>
+                <h3 className="font-semibold text-gray-800 mb-4">Order Items</h3>
                 <div className="space-y-3">
                   {selectedOrder.items.map((item, index) => (
-                    <div key={index} className="flex items-center space-x-4 p-3 bg-white/5 rounded-lg">
+                    <div key={index} className="flex items-center space-x-4 p-3 bg-gray-50 rounded-lg border border-gray-200">
                       <img
                         src={item.image}
                         alt={item.name}
                         className="w-12 h-12 object-cover rounded-lg"
                       />
                       <div className="flex-1">
-                        <h4 className="font-medium text-black">{item.name}</h4>
-                        <p className="text-black/70 text-sm">Quantity: {item.quantity}</p>
+                        <h4 className="font-medium text-gray-800">{item.name}</h4>
+                        <p className="text-gray-600 text-sm">Quantity: {item.quantity}</p>
                       </div>
                       <div className="text-right">
-                        <p className="font-semibold text-black">${item.price.toFixed(2)}</p>
-                        <p className="text-black/70 text-sm">Total: ${(item.price * item.quantity).toFixed(2)}</p>
+                        <p className="font-semibold text-gray-800">${item.price.toFixed(2)}</p>
+                        <p className="text-gray-600 text-sm">Total: ${(item.price * item.quantity).toFixed(2)}</p>
                       </div>
                     </div>
                   ))}
@@ -224,23 +224,23 @@ const OrderHistory: React.FC<OrderHistoryProps> = ({ orders }) => {
               </div>
 
               {/* Order Summary */}
-              <div className="bg-white/5 rounded-lg p-4">
-                <h3 className="font-semibold text-black mb-3">Order Summary</h3>
+              <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                <h3 className="font-semibold text-gray-800 mb-3">Order Summary</h3>
                 <div className="space-y-2 text-sm">
-                  <div className="flex justify-between text-black/70">
+                  <div className="flex justify-between text-gray-600">
                     <span>Subtotal</span>
                     <span>${selectedOrder.subtotal.toFixed(2)}</span>
                   </div>
-                  <div className="flex justify-between text-black/70">
+                  <div className="flex justify-between text-gray-600">
                     <span>Shipping</span>
                     <span>${selectedOrder.shipping.toFixed(2)}</span>
                   </div>
-                  <div className="flex justify-between text-black/70">
+                  <div className="flex justify-between text-gray-600">
                     <span>Tax</span>
                     <span>${selectedOrder.tax.toFixed(2)}</span>
                   </div>
-                  <div className="border-t border-white/20 pt-2">
-                    <div className="flex justify-between text-black font-bold">
+                  <div className="border-t border-gray-300 pt-2">
+                    <div className="flex justify-between font-bold text-gray-800">
                       <span>Total</span>
                       <span>${selectedOrder.total.toFixed(2)}</span>
                     </div>

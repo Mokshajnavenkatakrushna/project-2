@@ -8,7 +8,7 @@ const Dashboard: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-white/10 backdrop-blur-md rounded-xl border border-white/30 p-6">
+      <div className="bg-white rounded-xl border border-gray-200 p-6">
         <h1 className="text-3xl font-bold text-black mb-2">
           Welcome to {t('dashboard')}
         </h1>

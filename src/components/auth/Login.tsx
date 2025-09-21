@@ -38,7 +38,7 @@ const Login: React.FC = () => {
       </div>
 
       <div className="w-full max-w-md">
-        <div className="bg-white/30 backdrop-blur-md rounded-2xl border border-white/30 p-8 shadow-2xl">
+        <div className="bg-white rounded-2xl border border-gray-200 p-8 shadow-2xl">
           {/* Logo */}
           <div className="text-center mb-8">
             <div className="w-16 h-16 rounded-full overflow-hidden flex items-center justify-center mx-auto mb-4 bg-white">
@@ -67,7 +67,7 @@ const Login: React.FC = () => {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 bg-white/10 border border-white/20 rounded-lg text-black placeholder-black/50 focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-200"
+                  className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-black placeholder-gray-500 focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-200"
                   placeholder={t('enterEmail') ?? 'Enter your email'}
                   required
                 />

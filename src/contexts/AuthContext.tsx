@@ -22,11 +22,15 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const login = async (email: string, password: string): Promise<boolean> => {
     try {
+      console.log('Attempting login with:', { email });
       const response = await authApi.login({ email, password });
+      console.log('Login response:', response.data);
       setUser(response.data.user);
       return true;
-    } catch (error) {
+    } catch (error: any) {
       console.error('Login failed:', error);
+      console.error('Error response:', error.response?.data);
+      console.error('Error status:', error.response?.status);
       return false;
     }
   };

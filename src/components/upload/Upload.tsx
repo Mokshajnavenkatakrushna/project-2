@@ -109,7 +109,7 @@ const Upload: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="bg-white/10 backdrop-blur-md rounded-xl border border-white/20 p-6">
+      <div className="bg-white rounded-xl border border-gray-200 p-6">
         <h1 className="text-3xl font-bold text-black mb-2">
           {t('upload')} Lab Report
         </h1>
@@ -119,13 +119,13 @@ const Upload: React.FC = () => {
       </div>
 
       {/* Upload Area */}
-      <div className="bg-white/10 backdrop-blur-md rounded-xl border border-white/40 p-6">
+      <div className="bg-white rounded-xl border border-gray-200 p-6">
         <div
           className={`
             relative border-2 border-dashed rounded-xl p-12 text-center transition-all duration-200
             ${dragActive 
-              ? 'border-green-900 bg-green-500/90' 
-              : 'border-white/20 hover:border-white/90'
+              ? 'border-green-500 bg-green-50' 
+              : 'border-gray-300 hover:border-gray-400'
             }
           `}
           onDragEnter={handleDrag}
@@ -170,7 +170,7 @@ const Upload: React.FC = () => {
 
         {/* Supported Formats */}
         <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="flex items-center space-x-3 p-4 bg-white/5 rounded-lg border border-white/80">
+          <div className="flex items-center space-x-3 p-4 bg-gray-50 rounded-lg border border-gray-200">
             <FileText className="text-red-600" size={24} />
             <div>
               <p className="text-black font-medium">PDF Reports</p>
@@ -178,7 +178,7 @@ const Upload: React.FC = () => {
             </div>
           </div>
           
-          <div className="flex items-center space-x-3 p-4 bg-white/5 rounded-lg border border-white/80">
+          <div className="flex items-center space-x-3 p-4 bg-gray-50 rounded-lg border border-gray-200">
             <Image className="text-blue-600" size={24} />
             <div>
               <p className="text-black font-medium">Images</p>
@@ -186,7 +186,7 @@ const Upload: React.FC = () => {
             </div>
           </div>
           
-          <div className="flex items-center space-x-3 p-4 bg-white/5 rounded-lg border border-white/80">
+          <div className="flex items-center space-x-3 p-4 bg-gray-50 rounded-lg border border-gray-200">
             <Camera className="text-green-600" size={24} />
             <div>
               <p className="text-black font-medium">Photos</p>
@@ -198,39 +198,39 @@ const Upload: React.FC = () => {
 
       {/* Extracted Data */}
       {extractedData && (
-        <div className="bg-white/10 backdrop-blur-md rounded-xl border border-white/20 p-6">
+        <div className="bg-white rounded-xl border border-gray-200 p-6">
           <h2 className="text-xl font-bold text-black mb-6">Extracted Data</h2>
           
-          <div className="bg-green-500/70 border border-black-400/90 rounded-lg p-4 mb-6">
+          <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
             <div className="flex items-center space-x-2 mb-2">
-              <CheckCircle className="text-black-400" size={20} />
-              <span className="text-black-100 font-medium">Successfully extracted from: {extractedData.filename}</span>
+              <CheckCircle className="text-green-600" size={20} />
+              <span className="text-green-800 font-medium">Successfully extracted from: {extractedData.filename}</span>
             </div>
-            <p className="text-black-200 text-sm">Uploaded on {new Date(extractedData.uploadDate).toLocaleDateString()}</p>
+            <p className="text-green-700 text-sm">Uploaded on {new Date(extractedData.uploadDate).toLocaleDateString()}</p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6">
-            <div className="bg-white/5 p-4 rounded-lg text-center border-2 border-white/50">
+            <div className="bg-gray-50 p-4 rounded-lg text-center border-2 border-gray-200">
               <p className="text-black/70 text-sm mb-1">Nitrogen (N)</p>
               <p className="text-2xl font-bold text-black">{extractedData.nitrogen}</p>
               <p className="text-black/60 text-xs">mg/kg</p>
             </div>
-            <div className="bg-white/5 p-4 rounded-lg text-center border-2 border-white/50">
+            <div className="bg-gray-50 p-4 rounded-lg text-center border-2 border-gray-200">
               <p className="text-black/70 text-sm mb-1">Phosphorus (P)</p>
               <p className="text-2xl font-bold text-black">{extractedData.phosphorus}</p>
               <p className="text-black/60 text-xs">mg/kg</p>
             </div>
-            <div className="bg-white/5 p-4 rounded-lg text-center border-2 border-white/50">
+            <div className="bg-gray-50 p-4 rounded-lg text-center border-2 border-gray-200">
               <p className="text-black/70 text-sm mb-1">Potassium (K)</p>
               <p className="text-2xl font-bold text-black">{extractedData.potassium}</p>
               <p className="text-black/60 text-xs">mg/kg</p>
             </div>
-            <div className="bg-white/5 p-4 rounded-lg text-center border-2 border-white/50">
+            <div className="bg-gray-50 p-4 rounded-lg text-center border-2 border-gray-200">
               <p className="text-black/70 text-sm mb-1">pH Level</p>
               <p className="text-2xl font-bold text-black">{extractedData.pH}</p>
               <p className="text-black/60 text-xs">0-14 scale</p>
             </div>
-            <div className="bg-white/5 p-4 rounded-lg text-center border-2 border-white/50">
+            <div className="bg-gray-50 p-4 rounded-lg text-center border-2 border-gray-200">
               <p className="text-black/70 text-sm mb-1">Moisture</p>
               <p className="text-2xl font-bold text-black">{extractedData.moisture}</p>
               <p className="text-black/60 text-xs">%</p>
@@ -246,7 +246,7 @@ const Upload: React.FC = () => {
               Use This Data for Analysis
             </button>
             <button
-              className="flex-1 bg-white/10 hover:bg-white/20 text-black font-semibold py-3 px-6 rounded-lg border border-white/60 transition-all duration-200"
+              className="flex-1 bg-gray-100 hover:bg-gray-200 text-black font-semibold py-3 px-6 rounded-lg border border-gray-300 transition-all duration-200"
               onClick={handleSaveToProfile}
               disabled={saving}
             >

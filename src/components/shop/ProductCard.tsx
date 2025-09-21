@@ -1,5 +1,5 @@
-import React from 'react';
-import { Star, ShoppingCart, Package, CheckCircle } from 'lucide-react';
+import React, { useState } from 'react';
+import { Star, ShoppingCart, Package, CheckCircle, Image as ImageIcon } from 'lucide-react';
 import { Product } from '../../types';
 import { useApp } from '../../contexts/AppContext';
 import { useLanguage } from '../../contexts/LanguageContext';
@@ -11,9 +11,20 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { addToCart } = useApp();
   const { t } = useLanguage();
+  const [imageError, setImageError] = useState(false);
+  const [imageLoading, setImageLoading] = useState(true);
 
   const handleAddToCart = () => {
     addToCart(product);
+  };
+
+  const handleImageLoad = () => {
+    setImageLoading(false);
+  };
+
+  const handleImageError = () => {
+    setImageError(true);
+    setImageLoading(false);
   };
 
   const renderStars = (rating: number) => {
@@ -27,22 +38,41 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   };
 
   return (
-    <div className="group bg-white/10 backdrop-blur-md rounded-xl border border-white/20 overflow-hidden hover:bg-white/15 transition-all duration-300 hover:scale-105">
+    <div className="group bg-white rounded-xl border border-gray-200 overflow-hidden hover:bg-gray-50 transition-all duration-300 hover:scale-105">
       {/* Product Image */}
-      <div className="relative h-48 overflow-hidden">
-        <img
-          src={product.image}
-          alt={product.name}
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-        />
+      <div className="relative h-48 overflow-hidden bg-gray-100">
+        {imageLoading && (
+          <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-500"></div>
+          </div>
+        )}
+        
+        {imageError ? (
+          <div className="w-full h-full flex items-center justify-center bg-gray-100">
+            <div className="text-center">
+              <ImageIcon className="mx-auto text-gray-400 mb-2" size={32} />
+              <p className="text-gray-500 text-sm">Image not available</p>
+            </div>
+          </div>
+        ) : (
+          <img
+            src={product.image}
+            alt={product.name}
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+            onLoad={handleImageLoad}
+            onError={handleImageError}
+            loading="lazy"
+          />
+        )}
+        
         <div className="absolute top-3 right-3">
           {product.inStock ? (
-            <span className="bg-green-500/90 text-black px-2 py-1 rounded-full text-xs font-medium flex items-center space-x-1">
+            <span className="bg-green-500/90 text-white px-2 py-1 rounded-full text-xs font-medium flex items-center space-x-1">
               <CheckCircle size={12} />
               <span>In Stock</span>
             </span>
           ) : (
-            <span className="bg-red-500/90 text-black px-2 py-1 rounded-full text-xs font-medium flex items-center space-x-1">
+            <span className="bg-red-500/90 text-white px-2 py-1 rounded-full text-xs font-medium flex items-center space-x-1">
               <Package size={12} />
               <span>Out of Stock</span>
             </span>

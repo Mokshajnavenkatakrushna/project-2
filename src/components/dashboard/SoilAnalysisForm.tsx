@@ -172,7 +172,7 @@ const SoilAnalysisForm: React.FC = () => {
   return (
     <div className="space-y-8">
       {/* Soil Analysis Form */}
-      <div className="bg-white/10 backdrop-blur-md rounded-xl border border-white/20 p-6">
+      <div className="bg-white rounded-xl border border-gray-200 p-6">
         <h2 className="text-2xl font-bold text-black mb-6 flex items-center space-x-2">
           <Beaker className="text-black-400" />
           <span>{t('soilAnalysis')}</span>
@@ -189,7 +189,7 @@ const SoilAnalysisForm: React.FC = () => {
                 type="number"
                 value={formData.nitrogen}
                 onChange={(e) => handleInputChange('nitrogen', e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-white/10 border border-white/20 rounded-lg text-black placeholder-white/60 focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-200"
+                className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-black placeholder-gray-500 focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-200"
                 placeholder="0-100"
                 required
                 min="0"
@@ -208,7 +208,7 @@ const SoilAnalysisForm: React.FC = () => {
                 type="number"
                 value={formData.phosphorus}
                 onChange={(e) => handleInputChange('phosphorus', e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-white/10 border border-white/20 rounded-lg text-black placeholder-white/60 focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-200"
+                className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-black placeholder-gray-500 focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-200"
                 placeholder="0-50"
                 required
                 min="0"
@@ -227,7 +227,7 @@ const SoilAnalysisForm: React.FC = () => {
                 type="number"
                 value={formData.potassium}
                 onChange={(e) => handleInputChange('potassium', e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-white/10 border border-white/20 rounded-lg text-black placeholder-white/60 focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-200"
+                className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-black placeholder-gray-500 focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-200"
                 placeholder="0-300"
                 required
                 min="0"
@@ -247,7 +247,7 @@ const SoilAnalysisForm: React.FC = () => {
                 step="0.1"
                 value={formData.pH}
                 onChange={(e) => handleInputChange('pH', e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-white/10 border border-white/20 rounded-lg text-black placeholder-white/60 focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-200"
+                className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-black placeholder-gray-500 focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-200"
                 placeholder="0-14"
                 required
                 min="0"
@@ -266,7 +266,7 @@ const SoilAnalysisForm: React.FC = () => {
                 type="number"
                 value={formData.moisture}
                 onChange={(e) => handleInputChange('moisture', e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-white/10 border border-white/20 rounded-lg text-black placeholder-white/60 focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-200"
+                className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-black placeholder-gray-500 focus:ring-2 focus:ring-green-400 focus:border-transparent transition-all duration-200"
                 placeholder="0-100"
                 required
                 min="0"
@@ -290,7 +290,7 @@ const SoilAnalysisForm: React.FC = () => {
 
       {/* Results */}
       {results && (
-        <div className="bg-white/10 backdrop-blur-md rounded-xl border border-white/20 p-6">
+        <div className="bg-white rounded-xl border border-gray-200 p-6">
           <h3 className="text-xl font-bold text-black mb-6">Analysis Results</h3>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
