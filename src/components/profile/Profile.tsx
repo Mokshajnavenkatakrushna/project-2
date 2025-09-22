@@ -7,7 +7,7 @@ import OrderHistory from './OrderHistory';
 
 const Profile: React.FC = () => {
   const { t } = useLanguage();
-  const { soilHistory, orderHistory, isLoadingData } = useApp();
+  const { soilHistory, orderHistory, updateOrder, isLoadingData } = useApp();
   const { user } = useAuth();
   const [activeTab, setActiveTab] = useState<'tests' | 'orders'>('tests');
 
@@ -177,7 +177,7 @@ const Profile: React.FC = () => {
               <p className="text-black/40">Restoring your order history</p>
             </div>
           ) : (
-            <OrderHistory orders={orderHistory} />
+            <OrderHistory orders={orderHistory} onOrderUpdate={updateOrder} />
           )
         )}
       </div>

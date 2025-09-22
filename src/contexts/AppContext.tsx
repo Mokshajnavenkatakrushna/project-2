@@ -9,6 +9,7 @@ interface AppContextType {
   loadUserSoilHistory: () => Promise<void>;
   orderHistory: Order[];
   addOrder: (order: Order) => void;
+  updateOrder: (orderId: string, updates: Partial<Order>) => void;
   loadUserOrders: () => Promise<void>;
   isLoadingData: boolean;
   cart: CartItem[];
@@ -48,8 +49,80 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       const savedSoil = localStorage.getItem(`soilHistory_${user.id}`);
       
       if (savedOrders) {
+        console.log('Loading saved orders from localStorage:', JSON.parse(savedOrders));
         setOrderHistory(JSON.parse(savedOrders));
+      } else {
+        console.log('No saved orders found, creating mock orders');
+        // Add some mock orders for testing if no orders exist
+        const mockOrders: Order[] = [
+          {
+            _id: 'mock-order-1',
+            userId: user.id,
+            orderNumber: 'SOILQ-1234567890-0001',
+            items: [
+              {
+                productId: '1',
+                name: 'Nitrogen Fertilizer',
+                price: 25.99,
+                quantity: 2,
+                image: 'https://example.com/nitrogen.jpg'
+              }
+            ],
+            subtotal: 51.98,
+            shipping: 5.99,
+            tax: 4.64,
+            total: 62.61,
+            status: 'pending',
+            paymentStatus: 'pending',
+            paymentMethod: 'cod',
+            shippingAddress: {
+              name: 'John Doe',
+              address: '123 Main St',
+              city: 'New York',
+              state: 'NY',
+              pincode: '10001',
+              phone: '555-0123'
+            },
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString()
+          },
+          {
+            _id: 'mock-order-2',
+            userId: user.id,
+            orderNumber: 'SOILQ-1234567890-0002',
+            items: [
+              {
+                productId: '2',
+                name: 'Phosphorus Mix',
+                price: 19.99,
+                quantity: 1,
+                image: 'https://example.com/phosphorus.jpg'
+              }
+            ],
+            subtotal: 19.99,
+            shipping: 5.99,
+            tax: 2.08,
+            total: 28.06,
+            status: 'confirmed',
+            paymentStatus: 'paid',
+            paymentMethod: 'card',
+            shippingAddress: {
+              name: 'John Doe',
+              address: '123 Main St',
+              city: 'New York',
+              state: 'NY',
+              pincode: '10001',
+              phone: '555-0123'
+            },
+            createdAt: new Date(Date.now() - 86400000).toISOString(), // 1 day ago
+            updatedAt: new Date(Date.now() - 86400000).toISOString()
+          }
+        ];
+        console.log('Created mock orders:', mockOrders);
+        setOrderHistory(mockOrders);
+        localStorage.setItem(`orderHistory_${user.id}`, JSON.stringify(mockOrders));
       }
+      
       if (savedSoil) {
         setSoilHistory(JSON.parse(savedSoil));
       }
@@ -104,6 +177,26 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       const updatedHistory = [order, ...orderHistory];
       localStorage.setItem(`orderHistory_${user.id}`, JSON.stringify(updatedHistory));
     }
+  };
+
+  const updateOrder = (orderId: string, updates: Partial<Order>) => {
+    console.log('updateOrder called with:', orderId, updates);
+    setOrderHistory(prev => {
+      console.log('Previous orders:', prev);
+      const updatedOrders = prev.map(order => 
+        order._id === orderId 
+          ? { ...order, ...updates }
+          : order
+      );
+      console.log('Updated orders:', updatedOrders);
+      
+      // Save to localStorage as backup
+      if (user) {
+        localStorage.setItem(`orderHistory_${user.id}`, JSON.stringify(updatedOrders));
+      }
+      
+      return updatedOrders;
+    });
   };
 
   const loadUserOrders = async () => {
@@ -185,6 +278,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       loadUserSoilHistory,
       orderHistory,
       addOrder,
+      updateOrder,
       loadUserOrders,
       isLoadingData,
       cart,

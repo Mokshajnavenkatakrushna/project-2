@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import { authApi } from '../services/api';
 
 interface User {
@@ -12,6 +12,8 @@ interface User {
 interface AuthContextType {
   login: (email: string, password: string) => Promise<boolean>;
   signup: (name: string, email: string, password: string, language: string) => Promise<boolean>;
+  updateLanguage: (language: string) => void;
+  logout: () => void;
   user: User | null;
 }
 
@@ -20,12 +22,34 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
 
+  // Load user from localStorage on mount
+  useEffect(() => {
+    const savedUser = localStorage.getItem('user');
+    const savedLanguage = localStorage.getItem('userLanguage');
+    
+    if (savedUser) {
+      try {
+        const userData = JSON.parse(savedUser);
+        if (savedLanguage) {
+          userData.language = savedLanguage;
+        }
+        console.log('Loading user from localStorage:', userData);
+        setUser(userData);
+      } catch (error) {
+        console.error('Error parsing saved user:', error);
+        localStorage.removeItem('user');
+      }
+    }
+  }, []);
+
   const login = async (email: string, password: string): Promise<boolean> => {
     try {
       console.log('Attempting login with:', { email });
       const response = await authApi.login({ email, password });
       console.log('Login response:', response.data);
       setUser(response.data.user);
+      // Save user to localStorage
+      localStorage.setItem('user', JSON.stringify(response.data.user));
       return true;
     } catch (error: any) {
       console.error('Login failed:', error);
@@ -39,6 +63,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     try {
       const response = await authApi.signup({ name, email, password, language });
       setUser(response.data.user);
+      // Save user to localStorage
+      localStorage.setItem('user', JSON.stringify(response.data.user));
       return true;
     } catch (error) {
       console.error('Signup failed:', error);
@@ -46,8 +72,22 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   };
 
+  const updateLanguage = (language: string) => {
+    if (user) {
+      setUser({ ...user, language });
+      // Store in localStorage for persistence
+      localStorage.setItem('userLanguage', language);
+    }
+  };
+
+  const logout = () => {
+    setUser(null);
+    localStorage.removeItem('user');
+    localStorage.removeItem('userLanguage');
+  };
+
   return (
-    <AuthContext.Provider value={{ login, signup, user }}>
+    <AuthContext.Provider value={{ login, signup, updateLanguage, logout, user }}>
       {children}
     </AuthContext.Provider>
   );

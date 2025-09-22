@@ -125,6 +125,9 @@ const SoilAnalysisForm: React.FC = () => {
     };
 
     const analysis = analyzeSoil(numericData);
+    console.log('Analysis results:', analysis);
+    console.log('Recommendations:', analysis.recommendations);
+    console.log('Crop suggestions:', analysis.cropSuggestions);
     
     const soilData = {
       ...numericData,
@@ -292,6 +295,8 @@ const SoilAnalysisForm: React.FC = () => {
       {results && (
         <div className="bg-white rounded-xl border border-gray-200 p-6">
           <h3 className="text-xl font-bold text-black mb-6">Analysis Results</h3>
+          {console.log('Rendering results:', results)}
+          {console.log('Recommendations to render:', results.recommendations)}
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Status */}
@@ -307,7 +312,7 @@ const SoilAnalysisForm: React.FC = () => {
               <h4 className="font-semibold text-black mb-2">{t('cropSuggestions')}</h4>
               <div className="flex flex-wrap gap-2">
                 {results.cropSuggestions.map((crop: string, index: number) => (
-                  <span key={index} className="px-3 py-1 bg-blue-600/90 text-black-100 rounded-full text-sm">
+                  <span key={index} className="px-3 py-1 bg-blue-600 text-white rounded-full text-sm">
                     {crop}
                   </span>
                 ))}
@@ -320,8 +325,8 @@ const SoilAnalysisForm: React.FC = () => {
             <h4 className="font-semibold text-black mb-3">{t('recommendations')}</h4>
             <div className="space-y-2">
               {results.recommendations.map((rec: string, index: number) => (
-                <div key={index} className="p-3 bg-green-500/50 border border-white-400/30 rounded-lg">
-                  <p className="text-black-100">{rec}</p>
+                <div key={index} className="p-3 bg-green-50 border border-green-200 rounded-lg">
+                  <p className="text-black">{rec}</p>
                 </div>
               ))}
             </div>

@@ -55,6 +55,31 @@ const translations = {
     edit: 'Edit',
     delete: 'Delete',
     loading: 'Loading...',
+    
+    // Additional
+    enterEmail: 'Enter your email',
+    enterPassword: 'Enter your password',
+    enterName: 'Enter your full name',
+    showPassword: 'Show password',
+    hidePassword: 'Hide password',
+    invalidCredentials: 'Invalid credentials',
+    signupFailed: 'Signup failed',
+    createAccount: 'Create Your Account',
+    noAccount: 'Don\'t have an account?',
+    alreadyHaveAccount: 'Already have an account?',
+    soilQualityAnalyzer: 'Soil Quality Analyzer',
+    
+    // Order Management
+    cancelOrder: 'Cancel Order',
+    cancelOrderConfirm: 'Are you sure you want to cancel this order?',
+    cancelReason: 'Reason for cancellation (optional)',
+    orderCancelled: 'Order cancelled successfully',
+    cancelFailed: 'Failed to cancel order',
+    cannotCancelOrder: 'This order cannot be cancelled',
+    orderStatus: 'Order Status',
+    cancelOrderTitle: 'Cancel Order',
+    orderCancelledMessage: 'This order has been cancelled',
+    cancelled: 'CANCELLED',
   },
   hi: {
     // Auth
@@ -104,6 +129,31 @@ const translations = {
     edit: 'संपादित करें',
     delete: 'हटाएं',
     loading: 'लोड हो रहा है...',
+    
+    // Additional
+    enterEmail: 'अपना ईमेल दर्ज करें',
+    enterPassword: 'अपना पासवर्ड दर्ज करें',
+    enterName: 'अपना पूरा नाम दर्ज करें',
+    showPassword: 'पासवर्ड दिखाएं',
+    hidePassword: 'पासवर्ड छुपाएं',
+    invalidCredentials: 'अमान्य क्रेडेंशियल्स',
+    signupFailed: 'साइनअप असफल',
+    createAccount: 'अपना खाता बनाएं',
+    noAccount: 'खाता नहीं है?',
+    alreadyHaveAccount: 'पहले से खाता है?',
+    soilQualityAnalyzer: 'मिट्टी गुणवत्ता विश्लेषक',
+    
+    // Order Management
+    cancelOrder: 'ऑर्डर रद्द करें',
+    cancelOrderConfirm: 'क्या आप वाकई इस ऑर्डर को रद्द करना चाहते हैं?',
+    cancelReason: 'रद्दीकरण का कारण (वैकल्पिक)',
+    orderCancelled: 'ऑर्डर सफलतापूर्वक रद्द हो गया',
+    cancelFailed: 'ऑर्डर रद्द करने में विफल',
+    cannotCancelOrder: 'यह ऑर्डर रद्द नहीं किया जा सकता',
+    orderStatus: 'ऑर्डर स्थिति',
+    cancelOrderTitle: 'ऑर्डर रद्द करें',
+    orderCancelledMessage: 'यह ऑर्डर रद्द कर दिया गया है',
+    cancelled: 'रद्द',
   },
   te: {
     // Auth
@@ -153,6 +203,31 @@ const translations = {
     edit: 'సవరించండి',
     delete: 'తొలగించండి',
     loading: 'లోడ్ అవుతోంది...',
+    
+    // Additional
+    enterEmail: 'మీ ఇమెయిల్‌ను నమోదు చేయండి',
+    enterPassword: 'మీ పాస్‌వర్డ్‌ను నమోదు చేయండి',
+    enterName: 'మీ పూర్తి పేరును నమోదు చేయండి',
+    showPassword: 'పాస్‌వర్డ్‌ను చూపించండి',
+    hidePassword: 'పాస్‌వర్డ్‌ను దాచండి',
+    invalidCredentials: 'చెల్లని ధృవీకరణలు',
+    signupFailed: 'సైన్‌అప్ విఫలమైంది',
+    createAccount: 'మీ ఖాతాను సృష్టించండి',
+    noAccount: 'ఖాతా లేదా?',
+    alreadyHaveAccount: 'ఇప్పటికే ఖాతా ఉందా?',
+    soilQualityAnalyzer: 'మట్టి నాణ్యత విశ్లేషకుడు',
+    
+    // Order Management
+    cancelOrder: 'ఆర్డర్ రద్దు చేయండి',
+    cancelOrderConfirm: 'మీరు ఖచ్చితంగా ఈ ఆర్డర్‌ను రద్దు చేయాలనుకుంటున్నారా?',
+    cancelReason: 'రద్దుకు కారణం (ఐచ్ఛికం)',
+    orderCancelled: 'ఆర్డర్ విజయవంతంగా రద్దు చేయబడింది',
+    cancelFailed: 'ఆర్డర్ రద్దు చేయడంలో విఫలమైంది',
+    cannotCancelOrder: 'ఈ ఆర్డర్‌ను రద్దు చేయలేము',
+    orderStatus: 'ఆర్డర్ స్థితి',
+    cancelOrderTitle: 'ఆర్డర్ రద్దు చేయండి',
+    orderCancelledMessage: 'ఈ ఆర్డర్ రద్దు చేయబడింది',
+    cancelled: 'రద్దు',
   }
 };
 

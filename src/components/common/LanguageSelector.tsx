@@ -26,7 +26,7 @@ const LanguageSelector: React.FC = () => {
       {/* Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center space-x-2 px-3 py-2 rounded-lg bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-all duration-200"
+        className="flex items-center space-x-2 px-3 py-2 rounded-lg bg-white border border-gray-300 text-gray-800 hover:bg-gray-50 transition-all duration-200 shadow-sm"
       >
         <Globe size={18} />
         <span className="text-sm">
@@ -40,7 +40,7 @@ const LanguageSelector: React.FC = () => {
 
       {/* Dropdown */}
       {isOpen && (
-        <div className="absolute top-full right-0 mt-2 w-48 bg-white rounded-lg border border-gray-200 shadow-lg z-50 overflow-hidden">
+        <div className="absolute top-full right-0 mt-2 w-48 bg-white rounded-lg border border-gray-300 shadow-xl z-50 overflow-hidden">
           {languages.map((language, index) => (
             <button
               key={language.code}
@@ -48,8 +48,8 @@ const LanguageSelector: React.FC = () => {
               className={`w-full flex items-center space-x-3 px-4 py-3 text-left transition-colors duration-200
                 ${
                   language.code === currentLanguage.code
-                    ? 'bg-green-100 text-green-800 font-medium'
-                    : 'text-gray-700 hover:bg-gray-100'
+                    ? 'bg-green-50 text-green-700 font-semibold border-l-4 border-green-500'
+                    : 'text-gray-700 hover:bg-gray-50'
                 }
                 ${index === 0 ? 'rounded-t-lg' : ''}
                 ${index === languages.length - 1 ? 'rounded-b-lg' : ''}

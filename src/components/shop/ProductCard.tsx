@@ -40,15 +40,15 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <div className="group bg-white rounded-xl border border-gray-200 overflow-hidden hover:bg-gray-50 transition-all duration-300 hover:scale-105">
       {/* Product Image */}
-      <div className="relative h-48 overflow-hidden bg-gray-100">
+      <div className="relative h-56 overflow-hidden bg-white">
         {imageLoading && (
-          <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
+          <div className="absolute inset-0 flex items-center justify-center bg-white">
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-green-500"></div>
           </div>
         )}
         
         {imageError ? (
-          <div className="w-full h-full flex items-center justify-center bg-gray-100">
+          <div className="w-full h-full flex items-center justify-center bg-white">
             <div className="text-center">
               <ImageIcon className="mx-auto text-gray-400 mb-2" size={32} />
               <p className="text-gray-500 text-sm">Image not available</p>
@@ -58,7 +58,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <img
             src={product.image}
             alt={product.name}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+            className="w-full h-full object-contain bg-white group-hover:scale-105 transition-transform duration-300"
             onLoad={handleImageLoad}
             onError={handleImageError}
             loading="lazy"
